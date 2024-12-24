@@ -1,36 +1,34 @@
-
 1. Classe Player:
 
-name :(unique) Nom du joueur.
+user_name :(unique) Nom du joueur.
 -----------------
 __init__(self, id: int, name: str) : Initialise un joueur.
-afficher_informations(self) -> str : Retourne les informations du joueur sous forme de chaîne.
-modifier_nom(self, nouveau_nom: str) -> None : Met à jour le nom du joueur.
+
+3. Classe Historique:
+name_player :(FK) Référence au joueur. recuperer le nom du joueur. dans une variable globale dans le main.
+date : Date du QCM.
+score : Score obtenu par categorie
+categorie: Catégorie du QCM.
+score_finale: Score final du joueur.
+-----------------
+__init__(self, id_player: int, date: str, score: int) : Initialise un enregistrement d'historique.
+
 
 
 2. Classe Question:
-
-id : Identifiant unique de la question.
 qst : Le texte de la question.
 arrayResponse : Liste des options de réponse.
-correctResponse : La réponse correcte (index ou valeur).
+correctResponse : La réponse correcte (index).
 categorie : Catégorie de la question (enum).
 -----------------
 __init__(self, id: int, qst: str, arrayResponse: list[str], correctResponse: str, categorie: str) : Initialise une question.
-verifier_reponse(self, reponse: str) -> bool : Vérifie si une réponse est correcte.
+verifier_reponse(self, reponse: int) -> bool : Vérifie si une réponse est correcte.
+self.correctResponse == reponse
 afficher_question(self) -> str : Retourne la question et les options sous forme de chaîne.
 
 
-3. Classe Historique:
-name_player :(FK) Référence au joueur.
-date : Date du QCM.
-score : Score obtenu.
------------------
-__init__(self, id_player: int, date: str, score: int) : Initialise un enregistrement d'historique.
-afficher_historique(self) -> str : Retourne l'historique sous forme de chaîne.
 
-
-4. Propositions de fonctionnalités globales:
+4. Propositions de fonctionnalités globales:(Ramy)
 
 1. Gestion des Joueurs:
 joueur_existe(joueurs: list[Player], name: str) -> bool : Vérifie si un joueur existe.
@@ -43,4 +41,11 @@ filtrer_questions(questions: list[Question], categorie: str) -> list[Question] :
 
 3. Gestion de l'Historique:
 ajouter_historique(historiques: list[Historique], id_player: int, date: str, score: int) -> None : Ajoute une entrée d'historique.
-afficher_historique_joueur(historiques: list[Historique], id_player: int) -> str : Affiche lhistorique d'un joueur spécifique.
+afficher_historique_joueur(historiques: list[Historique], user_player: str) -> str : Affiche lhistorique d'un joueur spécifique.
+
+
+5. class export player_response:(Abdou)
+    user_name:
+    Qst_res: arrayRes[]
+    score:
+

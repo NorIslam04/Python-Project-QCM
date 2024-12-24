@@ -262,5 +262,27 @@
         ],
         "correctResponse": 1,
         "categorie": "bases"
+    },
+    {
+        "qst": "Que retourne la fonction len(['a', 'b', 'c']) ?",
+        "arrayResponse": [
+            "3",
+            "2",
+            "1",
+            "Erreur"
+        ],
+        "correctResponse": 0,
+        "categorie": "structures_de_donnees"
+    },
+    {
+        "qst": "Comment déclarer une fonction en Python ?",
+        "arrayResponse": [
+            "function nom():",
+            "def nom():",
+            "declare nom():",
+            "func nom():"
+        ],
+        "correctResponse": 1,
+        "categorie": "bases"
     }
 ]

@@ -28,6 +28,10 @@ def typewriter_effect(text, delay=0.05):
         time.sleep(delay)
     print()
 
+    current_user="user_name" #input
+    array_current_res=[] #.append() <- input
+    current_category="category" #input
+
 # QCM Data
 questions = [
     {
