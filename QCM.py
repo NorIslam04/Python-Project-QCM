@@ -12,21 +12,21 @@ def display_header(title):
     print(f"{title.center(50)}")
     print("=" * 50)
 
-def display_message(message, type="info"):
+def display_message(message, type):
     types = {
         "info": "\033[94m[INFO]\033[0m",
         "success": "\033[92m[SUCCESS]\033[0m",
         "error": "\033[91m[ERROR]\033[0m",
         "warning": "\033[93m[WARNING]\033[0m",
     }
-    print(f"{types.get(type, '[INFO]')} {message}")
+    print(f"{types.get(type, '[INFO]')} {message}")#si le type n'est pas trouvé, afficher [INFO]
 
-def typewriter_effect(text, delay=0.05):
+def typewriter_effect(text, delay):#effet machine à écrire
     for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(delay)
-    print()
+        sys.stdout.write(char)#affiche le caractère
+        sys.stdout.flush()#vide le tampon de sortie
+        time.sleep(delay)#délai entre chaque caractère
+    print()#saut de ligne
 
     current_user="user_name" #input
     array_current_res=[] #.append() <- input
@@ -101,9 +101,9 @@ def take_quiz(username):
     score = 0
     clear_console()
     display_header("Répondre au QCM")
-    for i, q in enumerate(questions):
+    for i, q in enumerate(questions):# i:nombre de question, q:question
         print(f"\nQuestion {i + 1}: {q['question']}")
-        for choice in q["choices"]:
+        for choice in q["choices"]:#affiche tous les choix
             print(choice)
         while True:
             try:
@@ -114,9 +114,9 @@ def take_quiz(username):
                     display_message(f"Votre score: {score}/{len(questions)}", "info")
                     display_message("Merci d'avoir utilisé l'application ! À bientôt.", "success")
                     sys.exit()
-                else:
+                else:#traitement de l'erreur si la réponse n'est pas entre 1 et 5
                     display_message("Veuillez entrer un nombre entre 1 et 5.", "warning")
-            except ValueError:
+            except ValueError:#traitement de l'erreur si la réponse n'est pas un nombre
                 display_message("Entrée invalide. Essayez encore.", "error")
 
         if answer == q["correct"]:
@@ -126,7 +126,8 @@ def take_quiz(username):
             display_message("Mauvaise réponse.", "error")
     
     display_message(f"Votre score: {score}/{len(questions)}", "info")
-    if username in user_scores:
+    # a la fin du QCM, on enregistre le score dans un fichier CSV
+    if username in user_scores:#si l'utilisateur existe déjà
         # save output to a file CSV "existe user"
         user_scores[username].append({"score": score, "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
     else: # save output to a file CSV "nouveau user"
@@ -136,7 +137,7 @@ def view_scores(username):
     clear_console()
     display_header("Historique des Scores")
     if username in user_scores:
-        for i, entry in enumerate(user_scores[username]):
+        for i, entry in enumerate(user_scores[username]):#i:nombre de score, entry:score
             print(f"{i + 1}. Score: {entry['score']}/{len(questions)} - Date: {entry['date']}")
     else:
         display_message("Aucun historique trouvé.", "info")
@@ -144,14 +145,14 @@ def view_scores(username):
 def main():
     clear_console()
     display_header("Application QCM")
-    typewriter_effect("Bienvenue dans l'application QCM...", delay=0.07)
+    typewriter_effect("Bienvenue dans l'application QCM...",0.07)
     
     username = input("Veuillez entrer votre nom: ").strip()
     while True:
         clear_console()
         display_header(f"Bienvenue, {username}")
         display_menu()
-        try:
+        try:#traitement de l'erreur si le choix n'est pas un nombre
             choice = int(input("Votre choix: "))
             if choice == 1:
                 take_quiz(username)
