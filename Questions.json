@@ -1,0 +1,142 @@
+[
+    {
+        "id": 1,
+        "qst": "Quel type de données est utilisé pour représenter du texte en Python ?",
+        "arrayResponse": ["int", "str", "list", "float"],
+        "correctResponse": 1,
+        "categorie": "bases"
+    },
+    {
+        "id": 2,
+        "qst": "Quelle est la méthode correcte pour ajouter un élément à une liste en Python ?",
+        "arrayResponse": ["append()", "add()", "insert()", "extend()"],
+        "correctResponse": 0,
+        "categorie": "structures_de_donnees"
+    },
+    {
+        "id": 3,
+        "qst": "Quelle est la valeur par défaut d'un dictionnaire en Python si une clé inexistante est demandée ?",
+        "arrayResponse": ["None", "Erreur", "False", "0"],
+        "correctResponse": 1,
+        "categorie": "structures_de_donnees"
+    },
+    {
+        "id": 4,
+        "qst": "Quelle bibliothèque est utilisée pour manipuler les données sous forme de tableaux multidimensionnels ?",
+        "arrayResponse": ["NumPy", "Pandas", "Matplotlib", "SciPy"],
+        "correctResponse": 0,
+        "categorie": "bibliotheques"
+    },
+    {
+        "id": 5,
+        "qst": "Quelle structure de contrôle est utilisée pour gérer les exceptions en Python ?",
+        "arrayResponse": ["try-except", "if-else", "while-try", "catch-throw"],
+        "correctResponse": 0,
+        "categorie": "exceptions"
+    },
+    {
+        "id": 6,
+        "qst": "Comment convertir un entier en chaîne de caractères en Python ?",
+        "arrayResponse": ["str()", "int()", "float()", "repr()"],
+        "correctResponse": 0,
+        "categorie": "bases"
+    },
+    {
+        "id": 7,
+        "qst": "Quel est le résultat de la division entière 7 // 2 en Python ?",
+        "arrayResponse": ["3.5", "3", "4", "Erreur"],
+        "correctResponse": 1,
+        "categorie": "operations"
+    },
+    {
+        "id": 8,
+        "qst": "Quelle fonction est utilisée pour ouvrir un fichier en Python ?",
+        "arrayResponse": ["read()", "open()", "file()", "write()"],
+        "correctResponse": 1,
+        "categorie": "fichiers"
+    },
+    {
+        "id": 9,
+        "qst": "Que retourne la fonction len(['a', 'b', 'c']) ?",
+        "arrayResponse": ["3", "2", "1", "Erreur"],
+        "correctResponse": 0,
+        "categorie": "structures_de_donnees"
+    },
+    {
+        "id": 10,
+        "qst": "Quelle est la méthode correcte pour capturer une exception spécifique ?",
+        "arrayResponse": ["try: except ValueError:", "if exception:", "try {catch: ValueError}", "try except(ValueError):"],
+        "correctResponse": 0,
+        "categorie": "exceptions"
+    },
+    {
+        "id": 11,
+        "qst": "Quelle est la méthode correcte pour supprimer un élément d'une liste en Python ?",
+        "arrayResponse": ["remove()", "delete()", "pop()", "clear()"],
+        "correctResponse": 0,
+        "categorie": "structures_de_donnees"
+    },
+    {
+        "id": 12,
+        "qst": "Que fait la méthode split() sur une chaîne de caractères ?",
+        "arrayResponse": ["Divise la chaîne en liste", "Concatène deux chaînes", "Remplace des caractères", "Supprime les espaces"],
+        "correctResponse": 0,
+        "categorie": "bases"
+    },
+    {
+        "id": 13,
+        "qst": "Comment déclarer une fonction en Python ?",
+        "arrayResponse": ["function nom():", "def nom():", "declare nom():", "func nom():"],
+        "correctResponse": 1,
+        "categorie": "bases"
+    },
+    {
+        "id": 14,
+        "qst": "Quel mot-clé est utilisé pour arrêter une boucle en Python ?",
+        "arrayResponse": ["stop", "exit", "break", "end"],
+        "correctResponse": 2,
+        "categorie": "bases"
+    },
+    {
+        "id": 15,
+        "qst": "Quel type de boucle garantit une exécution au moins une fois ?",
+        "arrayResponse": ["while", "for", "do-while", "foreach"],
+        "correctResponse": 2,
+        "categorie": "bases"
+    },
+    {
+        "id": 16,
+        "qst": "Quelle méthode est utilisée pour trier une liste en Python ?",
+        "arrayResponse": ["sort()", "order()", "arrange()", "sorted()"],
+        "correctResponse": 0,
+        "categorie": "structures_de_donnees"
+    },
+    {
+        "id": 17,
+        "qst": "Comment ajouter un élément à un dictionnaire en Python ?",
+        "arrayResponse": ["dict.add(key, value)", "dict[key] = value", "append(dict, key, value)", "dict.put(key, value)"],
+        "correctResponse": 1,
+        "categorie": "structures_de_donnees"
+    },
+    {
+        "id": 18,
+        "qst": "Que retourne la méthode readlines() d'un fichier ?",
+        "arrayResponse": ["Tout le contenu en texte brut", "Une liste de lignes", "Le nombre de lignes", "Une chaîne unique"],
+        "correctResponse": 1,
+        "categorie": "fichiers"
+    },
+    {
+        "id": 19,
+        "qst": "Comment attraper toutes les exceptions en Python ?",
+        "arrayResponse": ["try: except Exception:", "try: except all:", "try: except (All):", "try: except:*"],
+        "correctResponse": 0,
+        "categorie": "exceptions"
+    },
+    {
+        "id": 20,
+        "qst": "Que retourne la fonction isinstance(obj, cls) ?",
+        "arrayResponse": ["True si obj est une instance de cls", "False si obj est une classe", "La classe de obj", "Une exception"],
+        "correctResponse": 0,
+        "categorie": "bases"
+    }
+]

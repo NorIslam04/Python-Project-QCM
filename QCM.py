@@ -32,52 +32,52 @@ def typewriter_effect(text, delay=0.05):
 questions = [
     {
         "question": "Quelle est la capitale de la France ?",
-        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Madrid", "5. Voir les scores"],
+        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Madrid", "5. Quitter et voir le score"],
         "correct": 1
     },
     {
         "question": "Quel est le langage de programmation utilisé pour Django ?",
-        "choices": ["1. Java", "2. Python", "3. C#", "4. Ruby", "5. Voir les scores"],
+        "choices": ["1. Java", "2. Python", "3. C#", "4. Ruby", "5. Quitter et voir le score"],
         "correct": 2
     },
     {
         "question": "Combien de continents y a-t-il dans le monde ?",
-        "choices": ["1. 5", "2. 6", "3. 7", "4. 8", "5. Voir les scores"],
+        "choices": ["1. 5", "2. 6", "3. 7", "4. 8", "5. Quitter et voir le score"],
         "correct": 3
     },
     {
         "question": "Quelle est la couleur du ciel ?",
-        "choices": ["1. Rouge", "2. Vert", "3. Jaune", "4. Bleu", "5. Voir les scores"],
+        "choices": ["1. Rouge", "2. Vert", "3. Jaune", "4. Bleu", "5. Quitter et voir le score"],
         "correct": 4
     },
     {
         "question": "Quelle est la capitale de l'Espagne ?",
-        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Madrid", "5. Voir les scores"],
+        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Madrid", "5. Quitter et voir le score"],
         "correct": 4
     },
     {
         "question": "Quel est le résultat de 2 + 2 ?",
-        "choices": ["1. 3", "2. 4", "3. 5", "4. 6", "5. Voir les scores"],
+        "choices": ["1. 3", "2. 4", "3. 5", "4. 6", "5. Quitter et voir le score"],
         "correct": 2
     },
     {
         "question": "Quelle est la capitale de l'Allemagne ?",
-        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Madrid", "5. Voir les scores"],
+        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Madrid", "5. Quitter et voir le score"],
         "correct": 3
     },
     {
         "question": "Quelle est la capitale du Royaume-Uni ?",
-        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Madrid", "5. Voir les scores"],
+        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Madrid", "5. Quitter et voir le score"],
         "correct": 2
     },
     {
         "question": "Quelle est la capitale de l'Italie ?",
-        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Rome", "5. Voir les scores"],
+        "choices": ["1. Paris", "2. Londres", "3. Berlin", "4. Rome", "5. Quitter et voir le score"],
         "correct": 4
     },
     {
         "question": "Quelle est la capitale du Japon ?",
-        "choices": ["1. Paris", "2. Tokyo", "3. Berlin", "4. Madrid", "5. Voir les scores"],
+        "choices": ["1. Paris", "2. Tokyo", "3. Berlin", "4. Madrid", "5. Quitter et voir le score"],
         "correct": 2
     }
 ]
@@ -103,7 +103,7 @@ def take_quiz(username):
             print(choice)
         while True:
             try:
-                answer = int(input("Votre réponse (1-4): "))
+                answer = int(input("Votre réponse (1-5): "))
                 if 1 <= answer <= 4:
                     break
                 if answer == 5:
@@ -111,7 +111,7 @@ def take_quiz(username):
                     display_message("Merci d'avoir utilisé l'application ! À bientôt.", "success")
                     sys.exit()
                 else:
-                    display_message("Veuillez entrer un nombre entre 1 et 4.", "warning")
+                    display_message("Veuillez entrer un nombre entre 1 et 5.", "warning")
             except ValueError:
                 display_message("Entrée invalide. Essayez encore.", "error")
 
