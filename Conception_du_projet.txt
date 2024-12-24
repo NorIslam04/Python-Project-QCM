@@ -1,8 +1,7 @@
 
 1. Classe Player:
 
-id : Identifiant unique du joueur.
-name : Nom du joueur.
+name :(unique) Nom du joueur.
 -----------------
 __init__(self, id: int, name: str) : Initialise un joueur.
 afficher_informations(self) -> str : Retourne les informations du joueur sous forme de chaîne.
@@ -23,8 +22,7 @@ afficher_question(self) -> str : Retourne la question et les options sous forme 
 
 
 3. Classe Historique:
-
-id_player : Référence au joueur.
+name_player :(FK) Référence au joueur.
 date : Date du QCM.
 score : Score obtenu.
 -----------------
@@ -35,6 +33,7 @@ afficher_historique(self) -> str : Retourne l'historique sous forme de chaîne.
 4. Propositions de fonctionnalités globales:
 
 1. Gestion des Joueurs:
+joueur_existe(joueurs: list[Player], name: str) -> bool : Vérifie si un joueur existe.
 ajouter_joueur(joueurs: list[Player], id: int, name: str) -> Player : Ajoute un joueur à la liste.
 rechercher_joueur(joueurs: list[Player], id: int) -> Player | None : Trouve un joueur par son ID.
 
