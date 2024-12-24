@@ -1,0 +1,47 @@
+
+1. Classe Player:
+
+id : Identifiant unique du joueur.
+name : Nom du joueur.
+-----------------
+__init__(self, id: int, name: str) : Initialise un joueur.
+afficher_informations(self) -> str : Retourne les informations du joueur sous forme de chaîne.
+modifier_nom(self, nouveau_nom: str) -> None : Met à jour le nom du joueur.
+
+
+2. Classe Question:
+
+id : Identifiant unique de la question.
+qst : Le texte de la question.
+arrayResponse : Liste des options de réponse.
+correctResponse : La réponse correcte (index ou valeur).
+categorie : Catégorie de la question (enum).
+-----------------
+__init__(self, id: int, qst: str, arrayResponse: list[str], correctResponse: str, categorie: str) : Initialise une question.
+verifier_reponse(self, reponse: str) -> bool : Vérifie si une réponse est correcte.
+afficher_question(self) -> str : Retourne la question et les options sous forme de chaîne.
+
+
+3. Classe Historique:
+
+id_player : Référence au joueur.
+date : Date du QCM.
+score : Score obtenu.
+-----------------
+__init__(self, id_player: int, date: str, score: int) : Initialise un enregistrement d'historique.
+afficher_historique(self) -> str : Retourne l'historique sous forme de chaîne.
+
+
+4. Propositions de fonctionnalités globales:
+
+1. Gestion des Joueurs:
+ajouter_joueur(joueurs: list[Player], id: int, name: str) -> Player : Ajoute un joueur à la liste.
+rechercher_joueur(joueurs: list[Player], id: int) -> Player | None : Trouve un joueur par son ID.
+
+2. Gestion des Questions:
+charger_questions(fichier: str) -> list[Question] : Charge des questions depuis un fichier.
+filtrer_questions(questions: list[Question], categorie: str) -> list[Question] : Retourne les questions d'une catégorie spécifique.
+
+3. Gestion de l'Historique:
+ajouter_historique(historiques: list[Historique], id_player: int, date: str, score: int) -> None : Ajoute une entrée d'historique.
+afficher_historique_joueur(historiques: list[Historique], id_player: int) -> str : Affiche lhistorique d'un joueur spécifique.
