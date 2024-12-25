@@ -1,0 +1,32 @@
+[
+    {
+        "qst": "Quelle fonction est utilisée pour ouvrir un fichier en Python ?",
+        "arrayResponse": ["read()","open()","file()","write()"],
+        "correctResponse": 1,
+        "categorie": "file_handling"
+    },
+    {
+        "qst": "What method is used to read the entire file content?",
+        "arrayResponse": ["readall()", "read()", "readfile()", "readlines()"],
+        "correctResponse": 1,
+        "categorie": "file_handling"
+    },
+    {
+        "qst": "What does the write() method do?",
+        "arrayResponse": ["Reads from a file", "Writes to a file", "Appends to a file", "Creates a new file"],
+        "correctResponse": 1,
+        "categorie": "file_handling"
+    },
+    {
+        "qst": "What is the default mode for opening a file?",
+        "arrayResponse": ["write", "read", "append", "binary"],
+        "correctResponse": 1,
+        "categorie": "file_handling"
+    },
+    {
+        "qst": "Which statement ensures a file is properly closed?",
+        "arrayResponse": ["with open(...) as f", "try open(...) finally close()", "open(...) close()", "None of the above"],
+        "correctResponse": 0,
+        "categorie": "file_handling"
+    }
+]

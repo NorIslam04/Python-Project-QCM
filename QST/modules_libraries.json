@@ -1,0 +1,32 @@
+[
+    {
+        "qst": "Which library is used for data manipulation?",
+        "arrayResponse": ["NumPy", "Pandas", "Matplotlib", "SciPy"],
+        "correctResponse": 1,
+        "categorie": "modules_libraries"
+    },
+    {
+        "qst": "What is the purpose of the os module?",
+        "arrayResponse": ["File manipulation", "Operating system tasks", "Data visualization", "Math operations"],
+        "correctResponse": 1,
+        "categorie": "modules_libraries"
+    },
+    {
+        "qst": "Which command is used to install libraries in Python?",
+        "arrayResponse": ["install package", "pip install", "python install", "library install"],
+        "correctResponse": 1,
+        "categorie": "modules_libraries"
+    },
+    {
+        "qst": "Which library is commonly used for numerical operations?",
+        "arrayResponse": ["NumPy", "Pandas", "Matplotlib", "Seaborn"],
+        "correctResponse": 0,
+        "categorie": "modules_libraries"
+    },
+    {
+        "qst": "Which library is used for creating plots?",
+        "arrayResponse": ["NumPy", "Pandas", "Matplotlib", "Scikit-learn"],
+        "correctResponse": 2,
+        "categorie": "modules_libraries"
+    }
+]

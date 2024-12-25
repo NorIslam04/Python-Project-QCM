@@ -1,0 +1,43 @@
+[
+    {
+        "qst": "Quel mot-clé est utilisé pour créer une classe en Python ?",
+        "arrayResponse": [
+            "class",
+            "def",
+            "struct",
+            "create"
+        ],
+        "correctResponse": 0,
+        "categorie": "oop"
+    },
+    {
+        "qst": "What is a class in Python?",
+        "arrayResponse": ["A blueprint for creating objects", "A type of function", "An instance of an object", "None of the above"],
+        "correctResponse": 0,
+        "categorie": "oop"
+    },
+    {
+        "qst": "How do you create an object in Python?",
+        "arrayResponse": ["obj = className()", "obj = new className()", "obj = className.new()", "obj = className.create()"],
+        "correctResponse": 0,
+        "categorie": "oop"
+    },
+    {
+        "qst": "What is inheritance?",
+        "arrayResponse": ["Sharing code between classes", "Creating multiple objects", "Hiding class details", "None of the above"],
+        "correctResponse": 0,
+        "categorie": "oop"
+    },
+    {
+        "qst": "What is the correct syntax to define a class?",
+        "arrayResponse": ["define ClassName:", "class ClassName:", "create ClassName:", "ClassName.create:"],
+        "correctResponse": 1,
+        "categorie": "oop"
+    },
+    {
+        "qst": "Which keyword is used to access parent class members?",
+        "arrayResponse": ["parent", "base", "super", "self"],
+        "correctResponse": 2,
+        "categorie": "oop"
+    }
+]

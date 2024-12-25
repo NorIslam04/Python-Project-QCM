@@ -1,0 +1,32 @@
+[
+    {
+        "qst": "What is the output of: if 3 > 2: print('True')?",
+        "arrayResponse": ["Error", "True", "None", "3"],
+        "correctResponse": 1,
+        "categorie": "control_flow"
+    },
+    {
+        "qst": "Which keyword is used to check a condition in Python?",
+        "arrayResponse": ["if", "check", "when", "test"],
+        "correctResponse": 0,
+        "categorie": "control_flow"
+    },
+    {
+        "qst": "Which loop guarantees execution at least once?",
+        "arrayResponse": ["while", "for", "do-while", "foreach"],
+        "correctResponse": 2,
+        "categorie": "control_flow"
+    },
+    {
+        "qst": "How do you terminate a loop prematurely in Python?",
+        "arrayResponse": ["exit", "terminate", "break", "end"],
+        "correctResponse": 2,
+        "categorie": "control_flow"
+    },
+    {
+        "qst": "What does the continue statement do in a loop?",
+        "arrayResponse": ["Ends the loop", "Skips to the next iteration", "Repeats the current iteration", "None of the above"],
+        "correctResponse": 1,
+        "categorie": "control_flow"
+    }
+]
