@@ -1,0 +1,32 @@
+[
+    {
+        "qst": "What keyword is used to define a function in Python?",
+        "arrayResponse": ["function", "define", "def", "func"],
+        "correctResponse": 2,
+        "categorie": "functions"
+    },
+    {
+        "qst": "What is the default return value of a function that doesn’t return anything?",
+        "arrayResponse": ["0", "None", "Empty string", "False"],
+        "correctResponse": 1,
+        "categorie": "functions"
+    },
+    {
+        "qst": "How do you call a function in Python?",
+        "arrayResponse": ["call function()", "function()", "execute function", "run function"],
+        "correctResponse": 1,
+        "categorie": "functions"
+    },
+    {
+        "qst": "Which of these is a positional argument?",
+        "arrayResponse": ["arg1=value", "value1", "*args", "**kwargs"],
+        "correctResponse": 1,
+        "categorie": "functions"
+    },
+    {
+        "qst": "Which keyword is used for a function that does not return a value?",
+        "arrayResponse": ["void", "return", "pass", "None"],
+        "correctResponse": 2,
+        "categorie": "functions"
+    }
+]

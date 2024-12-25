@@ -1,0 +1,32 @@
+[
+    {
+        "qst": "What is the correct way to handle exceptions in Python?",
+        "arrayResponse": ["try-catch", "try-except", "try-finally", "catch-throw"],
+        "correctResponse": 1,
+        "categorie": "exceptions"
+    },
+    {
+        "qst": "Which exception is raised when dividing by zero?",
+        "arrayResponse": ["ValueError", "KeyError", "ZeroDivisionError", "ArithmeticError"],
+        "correctResponse": 2,
+        "categorie": "exceptions"
+    },
+    {
+        "qst": "How do you raise an exception?",
+        "arrayResponse": ["raise Exception", "throw Exception", "exception.raise()", "Error(Exception)"],
+        "correctResponse": 0,
+        "categorie": "exceptions"
+    },
+    {
+        "qst": "What is the base class for all exceptions in Python?",
+        "arrayResponse": ["BaseException", "Error", "Exception", "SystemError"],
+        "correctResponse": 0,
+        "categorie": "exceptions"
+    },
+    {
+        "qst": "What does the finally block do?",
+        "arrayResponse": ["Executes if no exceptions occur", "Executes always", "Executes only if an exception occurs", "None of the above"],
+        "correctResponse": 1,
+        "categorie": "exceptions"
+    }
+]
