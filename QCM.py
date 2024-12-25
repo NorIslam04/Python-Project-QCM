@@ -108,38 +108,59 @@ def take_quiz(username):
         return
 
     score = 0
+    user_answers = []  # List to store user's answers (index of chosen options)
+
     clear_console()
     display_header(f"Répondre au QCM - {chosen_category.capitalize()}")
-    for i, q in enumerate(questions):  # Iterate through the list of questions
-        print(f"\nQuestion {i + 1}: {q['qst']}")  # Display question text
-        for idx, choice in enumerate(q["arrayResponse"], start=1):  # Display answer choices
+
+    # Question Loop
+    for i, q in enumerate(questions):
+        print(f"\nQuestion {i + 1}: {q['qst']}")
+        for idx, choice in enumerate(q["arrayResponse"], start=1):
             print(f"{idx}. {choice}")
-        print("5. Quitter et voir le score")  # Allow the user to quit the quiz
+        print("5. Quitter et voir le score")
 
         while True:
             try:
                 answer = int(input("Votre réponse (1-5): "))
-                if 1 <= answer <= 4:  # Check if answer is a valid choice
+                if 1 <= answer <= 4:
+                    user_answers.append(answer - 1)  # Store the user's answer (0-based index)
                     break
-                if answer == 5:  # Quit the quiz and display score
-                    display_message(f"Votre score: {score}/{len(questions)}", "info")
-                    display_message("Merci d'avoir utilisé l'application ! À bientôt.", "success")
-                    sys.exit()  # Exit the program
+                if answer == 5:  # Quit and show results
+                    break
                 else:
                     display_message("Veuillez entrer un nombre entre 1 et 5.", "warning")
             except ValueError:
                 display_message("Entrée invalide. Essayez encore.", "error")
+        if answer == 5:
+            break
 
-        if answer - 1 == q["correctResponse"]:  # Check if the answer is correct
+    # Display Results
+    clear_console()
+    display_header("Résultats du QCM")
+    for i, q in enumerate(questions):
+        print(f"\nQuestion {i + 1}: {q['qst']}")
+        for idx, choice in enumerate(q["arrayResponse"]):
+            if idx == q["correctResponse"]:  # Highlight the correct response in green
+                print(f"\033[92m{idx + 1}. {choice} (Bonne réponse)\033[0m")
+            elif user_answers[i] == idx:  # Highlight the user's wrong response in red
+                print(f"\033[91m{idx + 1}. {choice} (Votre réponse)\033[0m")
+            else:
+                print(f"{idx + 1}. {choice}")
+        # Show a success or error message for each question
+        if user_answers[i] == q["correctResponse"]:
             display_message("Bonne réponse !", "success")
-            score += 1  # Increment score for a correct answer
+            score += 1
         else:
             display_message("Mauvaise réponse.", "error")
-    
+
+    # Final Score
     display_message(f"Votre score: {score}/{len(questions)}", "info")
-    if username in user_scores:  # Check if the user already exists in the scores
+
+    # Save Score
+    if username in user_scores:
         user_scores[username].append({"score": score, "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
-    else:  # If user is new, create an entry in the scores
+    else:
         user_scores[username] = [{"score": score, "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}]
 
 # Function to view user's score history
