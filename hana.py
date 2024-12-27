@@ -63,25 +63,6 @@ class Historique:
          historique += f"Score total : {self.somme()}\n"
          return historique  
     
-# ..................................Fonction pour sauvegarder  l'historique dans un fichier JSON...............................................
-     def save_to_json(self, filename: str = "historique.json") -> None:
-       
-        try:
-            if os.path.exists(filename):#si le fichier existe, on le charge
-                with open(filename, 'r', encoding='utf-8') as file:
-                    historique = json.load(file)
-            else:#si le fichier n'existe pas, on crée un nouveau fichier
-                historique = []
-            
-            historique.append(self.to_dict())#ajouter les données de l'historique dans la liste historique
-            
-            with open(filename, 'w', encoding='utf-8') as file:
-                json.dump(historique, file, indent=4, ensure_ascii=False)
-        except Exception as e:#si une erreur survient lors de la sauvegarde
-            print(f"Erreur lors de la sauvegarde dans le JSON: {e}")
-        else:
-            print("Historique sauvegardé avec succès dans le fichier JSON.")
-
 # ..................................Fonction pour sauvegarder  l'historique dans un fichier CSV...............................................
      def save_to_csv(self, filename: str = "resultats.csv") -> None:
         # Créer un fichier CSV et ajouter les données de l'historique
@@ -95,18 +76,6 @@ class Historique:
                  writer.writeheader()
 
              writer.writerow(self.to_dict())
-
-# ..................................Fonction pour charger l'historique à partir d'un fichier JSON...............................................
-     @staticmethod
-     def load_from_json(filename: str = "historique.json") -> list:
-            try:
-                with open(filename  , 'r', encoding='utf-8') as file:
-                    historique = json.load(file)            
-            except Exception as e:
-                print(f"Erreur lors du chargement de l'historique à partir du JSON: {e}")
-                historique = []
-            else:
-                print("Historique chargé avec succès à partir du fichier JSON.")
-            return historique
+             print("Historique enregistré avec succès dans le fichier CSV")
 
    
