@@ -65,6 +65,16 @@ def filtrer_questions(questions: List[Question], categorie: str) -> List[Questio
 def ajouter_historique(historiques: List[Historique], nom: str, date: str, score: int) -> None:
     historique = Historique(nom, date, score)
     historiques.append(historique)
+    # Append the new history entry to the CSV file
+    try:
+        with open("resultats.csv", mode="a", newline="", encoding="utf-8") as file:
+            writer = csv.DictWriter(file, fieldnames=["nom", "score", "date"])
+            # Write the header if the file is empty
+            if file.tell() == 0:
+                writer.writeheader()
+            writer.writerow({"nom": nom, "score": score, "date": date})
+    except Exception as e:
+        print(f"Erreur lors de l'ajout dans le fichier CSV : {e}")
 
 def afficher_historique_joueur(historiques: List[Historique], name: str) -> str:
     historique_joueur = [h for h in historiques if h.name == name]
