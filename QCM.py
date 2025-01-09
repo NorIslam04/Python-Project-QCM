@@ -86,12 +86,12 @@ def take_quiz(username):
             if 1 <= category_choice <= 8:
                 categories = [
                     "basics",
-                    "datastructure",
-                    "debugging",
+                    "data_structures",
+                    "control_flow",
                     "file_handling",
                     "functions",
                     "oop",
-                    "recursion",
+                    "exceptions",
                     "modules_libraries"
                 ]
                 chosen_category = categories[category_choice - 1]  # Map choice to category name
@@ -106,6 +106,7 @@ def take_quiz(username):
     if not questions:  # If no questions are available, return to the menu
         display_message(f"Aucune question disponible pour la catégorie {chosen_category}.", "error")
         return
+
 
     score = 0
     user_answers = []  # List to store user's answers (index of chosen options)
@@ -138,21 +139,26 @@ def take_quiz(username):
     # Display Results
     clear_console()
     display_header("Résultats du QCM")
+
     for i, q in enumerate(questions):
         print(f"\nQuestion {i + 1}: {q['qst']}")
         for idx, choice in enumerate(q["arrayResponse"]):
             if idx == q["correctResponse"]:  # Highlight the correct response in green
                 print(f"\033[92m{idx + 1}. {choice} (Bonne réponse)\033[0m")
-            elif user_answers[i] == idx:  # Highlight the user's wrong response in red
+            elif i < len(user_answers) and user_answers[i] == idx:  # Highlight the user's wrong response in red
                 print(f"\033[91m{idx + 1}. {choice} (Votre réponse)\033[0m")
             else:
                 print(f"{idx + 1}. {choice}")
-        # Show a success or error message for each question
-        if user_answers[i] == q["correctResponse"]:
-            display_message("Bonne réponse !", "success")
-            score += 1
+
+        # Show a message for each question
+        if i < len(user_answers):
+            if user_answers[i] == q["correctResponse"]:
+                display_message("Bonne réponse !", "success")
+                score += 1
+            else:
+                display_message("Mauvaise réponse.", "error")
         else:
-            display_message("Mauvaise réponse.", "error")
+            display_message("Vous n'avez pas répondu à cette question !!", "warning")
 
     # Final Score
     display_message(f"Votre score: {score}/{len(questions)}", "info")
