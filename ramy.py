@@ -103,3 +103,32 @@ def lire_historique_csv(fichier: str) -> List[Historique]:
     except Exception as e:
         print(f"Erreur lors de la lecture du fichier CSV : {e}")
     return historiques
+def view_scores(username):
+    def clear_console():
+        print("\033[H\033[J", end="")  # Efface l'écran (fonctionne sur les systèmes compatibles ANSI)
+
+    def display_header(header):
+        print(f"\n{'=' * 20}\n{header}\n{'=' * 20}")
+
+    def display_message(message, msg_type="info"):
+        prefix = "[INFO]" if msg_type == "info" else "[ERROR]"
+        print(f"{prefix} {message}")
+
+    clear_console()
+    display_header("Historique des Scores")
+
+    scores_found = False
+    try:
+        with open("resultats.csv", mode="r", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for i, row in enumerate(reader):
+                if row["nom"] == username:
+                    scores_found = True
+                    print(f"{i + 1}. Score: {row['score']} - Date: {row['date']}")
+
+        if not scores_found:
+            display_message("Aucun historique trouvé.", "info")
+    except FileNotFoundError:
+        display_message("Le fichier resultats.csv est introuvable.", "error")
+    except KeyError:
+        display_message("Le fichier resultats.csv ne contient pas les colonnes attendues.", "error")
