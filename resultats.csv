@@ -1,12 +1,8 @@
-nom,score,date
-Alice,18,2024-12-15
-Bob,15,2024-12-16
-Charlie,20,2024-12-17
-Charlie,20,2024-12-17
-Diana,19,2024-12-18
-Charlie,20,2024-12-17
-Diana,19,2024-12-18
-Charlie,20,2024-12-17
-Diana,19,2024-12-18
-ramy,4,2025-01-02 08:26:03
-ramy,0,2025-01-02 08:34:17
+nom,categorie,score,date
+
+islam,basics,0,2025-01-12 11:20:47
+islam,oop,5,2025-01-12 11:29:09
+islam,basics,0,2025-01-12 11:41:52
+islam,control_flow,2,2025-01-12 11:42:07
+islam,functions,0,2025-01-12 11:42:25
+islam,modules_libraries,1,2025-01-12 11:42:57

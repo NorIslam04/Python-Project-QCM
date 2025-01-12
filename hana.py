@@ -8,7 +8,7 @@ class Historique:
         self.score = score
         self.categorie = categorie
 
-Gestion de l'Historique
+
 def ajouter_historique( nom: str, date: str, score: int,categorie: str) -> None:
     # Append the new history entry to the CSV file
     try:
