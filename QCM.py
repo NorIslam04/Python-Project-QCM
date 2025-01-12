@@ -6,7 +6,6 @@ import json
 from datetime import datetime
 from ramy import view_scores
 from hana import ajouter_historique
-from chronometrer_questions import chronometrer_questions
 
 # Utilities for display
 def clear_console():
@@ -196,13 +195,25 @@ def take_quiz(username):
     if chosen_category != "":
         ajouter_historique(username, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), score, chosen_category)
 
-# Main function to control the application flow
+def is_valid_username(username):
+    # Vérifie si le nom contient uniquement des lettres et des espaces
+    return username and username.replace(" ", "").isalpha()
+
 def main():
     clear_console()
     display_header("Application QCM")
     typewriter_effect("Bienvenue dans l'application QCM...", 0.07)
     
-    username = input("Veuillez entrer votre nom: ").strip()  # Get the user's name
+    # Boucle de validation du nom d'utilisateur
+    while True:
+        username = input("Veuillez entrer votre nom: ").strip()
+        if not username:
+            display_message("Le nom ne peut pas être vide.", "error")
+        elif not is_valid_username(username):
+            display_message("Le nom doit contenir uniquement des lettres.", "error")
+        else:
+            break
+    
     while True:
         clear_console()
         display_header(f"Bienvenue, {username}")
@@ -210,18 +221,17 @@ def main():
         try:
             choice = int(input("Votre choix: "))
             if choice == 1:
-                take_quiz(username)  # Pass username to the quiz function
+                take_quiz(username)
             elif choice == 2:
-                view_scores(username)  # Show user's score history
+                view_scores(username)
             elif choice == 3:
                 display_message(f"Votre score: {score}/{len(questions)}", "info")
                 display_message("Merci d'avoir utilisé l'application ! À bientôt.", "success")
-                break  # Exit the main loop
+                break
             else:
                 display_message("Choix invalide. Essayez encore.", "warning")
         except ValueError:
             display_message("Entrée invalide. Veuillez entrer un nombre.", "error")
-        input("\nAppuyez sur Entrée pour continuer...")  # Wait for user input to proceed
-
+        input("\nAppuyez sur Entrée pour continuer...")
 if __name__ == "__main__":
     main()  # Entry point for the program

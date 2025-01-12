@@ -23,12 +23,6 @@
         "categorie": "oop"
     },
     {
-        "qst": "What is inheritance?",
-        "arrayResponse": ["Sharing code between classes", "Creating multiple objects", "Hiding class details", "None of the above"],
-        "correctResponse": 0,
-        "categorie": "oop"
-    },
-    {
         "qst": "What is the correct syntax to define a class?",
         "arrayResponse": ["define ClassName:", "class ClassName:", "create ClassName:", "ClassName.create:"],
         "correctResponse": 1,
