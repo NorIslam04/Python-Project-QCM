@@ -2,6 +2,7 @@ from typing import List, Optional
 from datetime import datetime
 import json
 import csv
+from display import clear_console, display_header, display_message
 
 
 
@@ -26,16 +27,7 @@ def rechercher_joueur(joueurs: List[Player], id: int) -> Optional[Player]:
     return None
 
 def view_scores(username):
-    def clear_console():
-        print("\033[H\033[J", end="")  # Efface l'écran (fonctionne sur les systèmes compatibles ANSI)
-
-    def display_header(header):
-        print(f"\n{'=' * 20}\n{header}\n{'=' * 20}")
-
-    def display_message(message, msg_type="info"):
-        prefix = "[INFO]" if msg_type == "info" else "[ERROR]"
-        print(f"{prefix} {message}")
-
+    
     clear_console()
     display_header("Historique des Scores")
 

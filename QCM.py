@@ -6,33 +6,14 @@ import json
 from datetime import datetime
 from ramy import view_scores
 from hana import ajouter_historique
+from display import clear_console, display_header, display_message, typewriter_effect, display_menu, display_categories
 
-# Utilities for display
-def clear_console():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
-def display_header(title):
-    print("=" * 50)
-    print(f"{title.center(50)}")
-    print("=" * 50)
+questions = []
+user_answers = []
+score = 0
+chosen_category = ""
 
-# Function to display messages with different colors and types
-def display_message(message, type):
-    types = {
-        "info": "\033[94m[INFO]\033[0m",
-        "success": "\033[92m[SUCCESS]\033[0m",
-        "error": "\033[91m[ERROR]\033[0m",
-        "warning": "\033[93m[WARNING]\033[0m",
-    }
-    print(f"{types.get(type, '[INFO]')} {message}")
-
-# Function to simulate a typewriter effect
-def typewriter_effect(text, delay):
-    for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(delay)
-    print()
 
 # Load questions from the `QST` directory based on the chosen category
 def load_questions_by_category(category, directory="QST"):
@@ -48,32 +29,6 @@ def load_questions_by_category(category, directory="QST"):
         display_message(f"Erreur lors du chargement des questions: {e}", "error")
     return questions  # Return the loaded questions
 
-# Main Functions
-def display_menu():
-    print("\nMAIN MENU")
-    print("-" * 20)
-    print("1. Répondre à un QCM")
-    print("2. Voir l'historique des scores")
-    print("3. Quitter")
-    print("-" * 20)
-
-# Function to display categories
-def display_categories():
-    categories = [
-        "1. basics",
-        "2. data_structures",
-        "3. control_flow",
-        "4. functions",
-        "5. file_handling",
-        "6. oop",
-        "7. exceptions",
-        "8. modules_libraries"
-    ]
-    print("\nCHOISISSEZ UNE CATÉGORIE")
-    print("-" * 20)
-    for category in categories:
-        print(category)
-    print("-" * 20)
 
 # Function to display questions with user's answers and correct answers
 def display_questions_reponses(questions, user_answers):
@@ -104,6 +59,7 @@ def display_questions_reponses(questions, user_answers):
         else:
             display_message("Vous n'avez pas répondu à cette question !!", "warning")
 
+# Function to ask questions and get user's answers
 def ask_questions(questions, chosen_category, duree_max=10):
     clear_console()
     display_header(f"Répondre au QCM - {chosen_category.capitalize()}")
@@ -147,16 +103,15 @@ def ask_questions(questions, chosen_category, duree_max=10):
     return user_answers
 
 
-questions = []
-user_answers = []
-score = 0
-chosen_category = ""
-
 # Function to take the quiz
+# Modifiez la fonction take_quiz pour réinitialiser le score
 def take_quiz(username):
     clear_console()
     display_header("Choisissez une catégorie")
     display_categories()
+
+    global score
+    score = 0  # Réinitialiser le score au début de chaque quiz
 
     # Get category choice
     while True:
@@ -174,29 +129,27 @@ def take_quiz(username):
                     "modules_libraries"
                 ]
                 global chosen_category 
-                chosen_category = categories[category_choice - 1]  # Map choice to category name
+                chosen_category = categories[category_choice - 1]
                 break
             else:
                 display_message("Veuillez entrer un nombre entre 1 et 8.", "warning")
         except ValueError:
             display_message("Entrée invalide. Essayez encore.", "error")
 
-    # Load questions for the chosen category
     global questions 
     questions = load_questions_by_category(chosen_category)
-    if not questions:  # If no questions are available, return to the menu
+    if not questions:
         display_message(f"Aucune question disponible pour la catégorie {chosen_category}.", "error")
         return
 
-    # Ask questions and store user's answers
     global user_answers
     user_answers = ask_questions(questions, chosen_category)
     display_questions_reponses(questions, user_answers)
     if chosen_category != "":
         ajouter_historique(username, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), score, chosen_category)
 
+# Vérifie si le nom contient uniquement des lettres et des espaces
 def is_valid_username(username):
-    # Vérifie si le nom contient uniquement des lettres et des espaces
     return username and username.replace(" ", "").isalpha()
 
 def main():
