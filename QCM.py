@@ -1,3 +1,4 @@
+import msvcrt
 import os
 import sys
 import time
@@ -5,11 +6,11 @@ import json
 from datetime import datetime
 from ramy import view_scores
 from hana import ajouter_historique
+from chronometrer_questions import chronometrer_questions
 
 # Utilities for display
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
-
 
 def display_header(title):
     print("=" * 50)
@@ -48,7 +49,6 @@ def load_questions_by_category(category, directory="QST"):
         display_message(f"Erreur lors du chargement des questions: {e}", "error")
     return questions  # Return the loaded questions
 
-
 # Main Functions
 def display_menu():
     print("\nMAIN MENU")
@@ -62,7 +62,7 @@ def display_menu():
 def display_categories():
     categories = [
         "1. basics",
-        "2. datastructure",
+        "2. data_structures",
         "3. control_flow",
         "4. functions",
         "5. file_handling",
@@ -80,21 +80,24 @@ def display_categories():
 def display_questions_reponses(questions, user_answers):
     clear_console()
     display_header("Résultats du QCM")
-    score = 0
+    global score
 
     for i, q in enumerate(questions):
         print(f"\nQuestion {i + 1}: {q['qst']}")
         for idx, choice in enumerate(q["arrayResponse"]):
             if idx == q["correctResponse"]:  # Met en évidence la bonne réponse en vert
                 print(f"\033[92m{idx + 1}. {choice} (Bonne réponse)\033[0m")
-            elif i < len(user_answers) and user_answers[i] == idx:  # Met en évidence la mauvaise réponse de l'utilisateur en rouge
+            elif i < len(user_answers) and user_answers[i] is not None and user_answers[i] == idx:  
+                # Met en évidence la mauvaise réponse de l'utilisateur en rouge
                 print(f"\033[91m{idx + 1}. {choice} (Votre réponse)\033[0m")
             else:
                 print(f"{idx + 1}. {choice}")
 
         # Affiche un message pour chaque question
         if i < len(user_answers):
-            if user_answers[i] == q["correctResponse"]:
+            if user_answers[i] is None:  # Si pas de réponse (timeout)
+                display_message("Vous n'avez pas répondu à cette question !!", "warning")
+            elif user_answers[i] == q["correctResponse"]:
                 display_message("Bonne réponse !", "success")
                 score += 1
             else:
@@ -102,43 +105,53 @@ def display_questions_reponses(questions, user_answers):
         else:
             display_message("Vous n'avez pas répondu à cette question !!", "warning")
 
-    return score
-
-
-def ask_questions(questions, chosen_category):
+def ask_questions(questions, chosen_category, duree_max=10):
     clear_console()
     display_header(f"Répondre au QCM - {chosen_category.capitalize()}")
     user_answers = []
 
     for i, q in enumerate(questions):
+        temps_debut = time.time()
+        
         print(f"\nQuestion {i + 1}: {q['qst']}")
         for idx, choice in enumerate(q["arrayResponse"], start=1):
             print(f"{idx}. {choice}")
         print("5. Quitter et voir le score")
-
+        
         while True:
-            try:
-                answer = int(input("Votre réponse (1-5): "))
-                if 1 <= answer <= 4:
-                    user_answers.append(answer - 1)  # Stocke la réponse (index basé sur 0)
-                    break
-                if answer == 5:  # Quitter et afficher les résultats
-                    print("\nVous avez choisi de quitter le quiz.")
-                    break
-                else:
-                    display_message("Veuillez entrer un nombre entre 1 et 5.", "warning")
-            except ValueError:
-                display_message("Entrée invalide. Essayez encore.", "error")
-
-        if answer == 5:
-            break
+            temps_ecoule = time.time() - temps_debut
+            temps_restant = duree_max - temps_ecoule
+            
+            if temps_restant <= 0:
+                display_message(f"\nTemps écoulé ! Vous aviez {duree_max} secondes pour répondre.", "warning")
+                user_answers.append(None)
+                break
+            
+            if temps_restant <= 10:
+                sys.stdout.write(f"\rTemps restant: {int(temps_restant)} secondes!   ")
+                sys.stdout.flush()
+            
+            if msvcrt.kbhit():
+                key = msvcrt.getch().decode('utf-8')
+                if key in ['1', '2', '3', '4', '5']:
+                    answer = int(key)
+                    if answer == 5:
+                        display_message("Vous avez choisi de quitter le quiz.", "info")
+                        return user_answers
+                    elif 1 <= answer <= 4:
+                        user_answers.append(answer - 1)
+                        print(f"\nVous avez choisi: {answer}")
+                        break
+            
+            time.sleep(0.1)
 
     return user_answers
 
-questions=[]
-user_answers=[]
-score=0
-chosen_category=""
+
+questions = []
+user_answers = []
+score = 0
+chosen_category = ""
 
 # Function to take the quiz
 def take_quiz(username):
@@ -162,7 +175,7 @@ def take_quiz(username):
                     "modules_libraries"
                 ]
                 global chosen_category 
-                chosen_category= categories[category_choice - 1]  # Map choice to category name
+                chosen_category = categories[category_choice - 1]  # Map choice to category name
                 break
             else:
                 display_message("Veuillez entrer un nombre entre 1 et 8.", "warning")
@@ -171,7 +184,7 @@ def take_quiz(username):
 
     # Load questions for the chosen category
     global questions 
-    questions= load_questions_by_category(chosen_category)
+    questions = load_questions_by_category(chosen_category)
     if not questions:  # If no questions are available, return to the menu
         display_message(f"Aucune question disponible pour la catégorie {chosen_category}.", "error")
         return
@@ -179,12 +192,9 @@ def take_quiz(username):
     # Ask questions and store user's answers
     global user_answers
     user_answers = ask_questions(questions, chosen_category)
-
-    #appel de la fonction display_questions with the questions and user_answers as arguments
-    global score 
-    score= display_questions_reponses(questions, user_answers)
-
-# Function to view user's score history
+    display_questions_reponses(questions, user_answers)
+    if chosen_category != "":
+        ajouter_historique(username, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), score, chosen_category)
 
 # Main function to control the application flow
 def main():
@@ -205,8 +215,6 @@ def main():
                 view_scores(username)  # Show user's score history
             elif choice == 3:
                 display_message(f"Votre score: {score}/{len(questions)}", "info")
-                if chosen_category != "":
-                    ajouter_historique(username, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), score,chosen_category)
                 display_message("Merci d'avoir utilisé l'application ! À bientôt.", "success")
                 break  # Exit the main loop
             else:
@@ -214,7 +222,6 @@ def main():
         except ValueError:
             display_message("Entrée invalide. Veuillez entrer un nombre.", "error")
         input("\nAppuyez sur Entrée pour continuer...")  # Wait for user input to proceed
-
 
 if __name__ == "__main__":
     main()  # Entry point for the program
