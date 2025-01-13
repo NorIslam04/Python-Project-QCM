@@ -4,8 +4,8 @@ import sys
 import time
 import json
 from datetime import datetime
-from ramy import view_scores
-from hana import ajouter_historique
+from ramy import view_scores, save_user_responses
+from hana import ajouter_historique, view_user_responses
 from display import clear_console, display_header, display_message, typewriter_effect, display_menu, display_categories
 
 
@@ -13,6 +13,7 @@ questions = []
 user_answers = []
 score = 0
 chosen_category = ""
+username=""
 
 
 # Load questions from the `QST` directory based on the chosen category
@@ -79,7 +80,7 @@ def ask_questions(questions, chosen_category, duree_max=10):
             
             if temps_restant <= 0:
                 display_message(f"\nTemps écoulé ! Vous aviez {duree_max} secondes pour répondre.", "warning")
-                user_answers.append(None)
+                user_answers.append(None)  # -1 pour timeout
                 break
             
             if temps_restant <= 10:
@@ -91,6 +92,7 @@ def ask_questions(questions, chosen_category, duree_max=10):
                 if key in ['1', '2', '3', '4', '5']:
                     answer = int(key)
                     if answer == 5:
+                        save_user_responses(username, chosen_category, user_answers, questions[:len(user_answers)])
                         display_message("Vous avez choisi de quitter le quiz.", "info")
                         return user_answers
                     elif 1 <= answer <= 4:
@@ -100,8 +102,9 @@ def ask_questions(questions, chosen_category, duree_max=10):
             
             time.sleep(0.1)
 
+    # Sauvegarde les réponses à la fin du quiz
+    save_user_responses(username, chosen_category, user_answers, questions)
     return user_answers
-
 
 # Function to take the quiz
 # Modifiez la fonction take_quiz pour réinitialiser le score
@@ -157,8 +160,8 @@ def main():
     display_header("Application QCM")
     typewriter_effect("Bienvenue dans l'application QCM...", 0.07)
     
-    # Boucle de validation du nom d'utilisateur
     while True:
+        global username
         username = input("Veuillez entrer votre nom: ").strip()
         if not username:
             display_message("Le nom ne peut pas être vide.", "error")
@@ -178,6 +181,8 @@ def main():
             elif choice == 2:
                 view_scores(username)
             elif choice == 3:
+                view_user_responses(username)  # Nouvelle option
+            elif choice == 4:
                 display_message(f"Votre score: {score}/{len(questions)}", "info")
                 display_message("Merci d'avoir utilisé l'application ! À bientôt.", "success")
                 break
@@ -186,5 +191,8 @@ def main():
         except ValueError:
             display_message("Entrée invalide. Veuillez entrer un nombre.", "error")
         input("\nAppuyez sur Entrée pour continuer...")
+
+
+
 if __name__ == "__main__":
     main()  # Entry point for the program

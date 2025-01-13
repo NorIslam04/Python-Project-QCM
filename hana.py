@@ -22,7 +22,7 @@ def ajouter_historique( nom: str, date: str, score: int,categorie: str) -> None:
     except Exception as e:
         print(f"Erreur lors de l'ajout dans le fichier CSV : {e}")
 #...................................................................................................................................................................
-        def view_user_responses(username: str) -> None:
+def view_user_responses(username: str) -> None:
     """Affiche les réponses détaillées de l'utilisateur depuis le fichier JSON."""
     clear_console()
     display_header("Historique Détaillé des Réponses")
@@ -38,10 +38,10 @@ def ajouter_historique( nom: str, date: str, score: int,categorie: str) -> None:
             return
 
         for entry in user_entries:
-            print(f"\n{'='50}")
+            print(f"\n{'='*50}")
             print(f"Catégorie: {entry['category']}")
             print(f"Date: {entry['date']}")
-            print(f"{'='50}")
+            print(f"{'='*50}")
 
             for i, q in enumerate(entry["questions"], 1):
                 print(f"\nQuestion {i}: {q['question']}")
