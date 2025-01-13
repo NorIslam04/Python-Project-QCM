@@ -37,8 +37,6 @@ Ce projet est une application de questionnaire à choix multiples (QCM) en Pytho
    git clone https://github.com/NorIslam04/Python-Project-QCM/
    cd Python-Project-QCM
    
-2.Execution:
-Pour lancer l'application, exécutez le fichier QCM.py:
-  ```sh
+2. Execution:
+   ```sh
    python QCM.py
-  ```
