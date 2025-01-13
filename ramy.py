@@ -1,30 +1,9 @@
-from typing import List, Optional
 from datetime import datetime
 import json
 import csv
 from display import clear_console, display_header, display_message
 
 
-
-class Player:
-    def __init__(self, id: int, name: str):
-        self.id = id
-        self.name = name
-
-# Gestion des Joueurs
-def joueur_existe(joueurs: List[Player], name: str) -> bool:
-    return any(joueur.name == name for joueur in joueurs)
-
-def ajouter_joueur(joueurs: List[Player], id: int, name: str) -> Player:
-    joueur = Player(id, name)
-    joueurs.append(joueur)
-    return joueur
-
-def rechercher_joueur(joueurs: List[Player], id: int) -> Optional[Player]:
-    for joueur in joueurs:
-        if joueur.id == id:
-            return joueur
-    return None
 
 def view_scores(username):
     
@@ -48,3 +27,44 @@ def view_scores(username):
         display_message("Le fichier resultats.csv est introuvable.", "error")
     except KeyError:
         display_message("Le fichier resultats.csv ne contient pas les colonnes attendues.", "error")
+
+
+def save_user_responses(username: str, category: str, responses: list, questions: list) -> None:
+
+    # Prépare les données à sauvegarder
+    user_data = {
+        "username": username,
+        "category": category,
+        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "questions": []
+    }
+
+    # Pour chaque question et réponse
+    for i, (question, response) in enumerate(zip(questions, responses)):
+        q_data = {
+            "question": question["qst"],
+            "user_response": -1 if response is None else response,
+            "correct_response": question["correctResponse"]
+        }
+        user_data["questions"].append(q_data)
+
+    try:
+        # Charge les données existantes
+        existing_data = []
+        try:
+            with open("reponse_user.json", "r", encoding="utf-8") as f:
+                existing_data = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            existing_data = []
+
+        # Ajoute les nouvelles données
+        if not isinstance(existing_data, list):
+            existing_data = []
+        existing_data.append(user_data)
+
+        # Sauvegarde dans le fichier
+        with open("reponse_user.json", "w", encoding="utf-8") as f:
+            json.dump(existing_data, f, indent=4, ensure_ascii=False)
+
+    except Exception as e:
+        display_message(f"Erreur lors de la sauvegarde des réponses: {e}", "error")
