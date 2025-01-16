@@ -30,12 +30,15 @@ def view_scores(username):
 
 
 def save_user_responses(username: str, category: str, responses: list, questions: list) -> None:
+    # Calculer le score
+    score = sum(1 for i, response in enumerate(responses) if response is not None and response == questions[i]["correctResponse"])
 
     # Prépare les données à sauvegarder
     user_data = {
         "username": username,
         "category": category,
         "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "score": score,
         "questions": []
     }
 
@@ -43,8 +46,8 @@ def save_user_responses(username: str, category: str, responses: list, questions
     for i, (question, response) in enumerate(zip(questions, responses)):
         q_data = {
             "question": question["qst"],
-            "user_response": -1 if response is None else response,
-            "correct_response": question["correctResponse"]
+            "user_response": "Pas de réponse" if response is None else question["arrayResponse"][response],
+            "correct_response": question["arrayResponse"][question["correctResponse"]]
         }
         user_data["questions"].append(q_data)
 

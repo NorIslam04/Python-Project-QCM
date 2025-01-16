@@ -43,7 +43,7 @@ def display_message(message, type):
         "error": "\033[91m[ERROR]\033[0m",
         "warning": "\033[93m[WARNING]\033[0m",
     }
-    print(f"{types.get(type, '[INFO]')} {message}")
+    print(f"\n{types.get(type, '[INFO]')} {message}")
 
 # Function to simulate a typewriter effect
 def typewriter_effect(text, delay):

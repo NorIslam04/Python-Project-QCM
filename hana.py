@@ -21,6 +21,8 @@ def ajouter_historique( nom: str, date: str, score: int,categorie: str) -> None:
             writer.writerow({"nom": nom,"categorie":categorie, "score": score, "date": date})
     except Exception as e:
         print(f"Erreur lors de l'ajout dans le fichier CSV : {e}")
+
+        
 #...................................................................................................................................................................
 def view_user_responses(username: str) -> None:
     """Affiche les réponses détaillées de l'utilisateur depuis le fichier JSON."""
@@ -41,18 +43,19 @@ def view_user_responses(username: str) -> None:
             print(f"\n{'='*50}")
             print(f"Catégorie: {entry['category']}")
             print(f"Date: {entry['date']}")
+            print(f"Score: {entry['score']}/5")
             print(f"{'='*50}")
 
             for i, q in enumerate(entry["questions"], 1):
                 print(f"\nQuestion {i}: {q['question']}")
-                if q['user_response'] == -1:
+                if q['user_response'] == "Pas de réponse":
                     print("\033[93mPas de réponse (temps écoulé)\033[0m")
                 else:
                     if q['user_response'] == q['correct_response']:
-                        print(f"\033[92mVotre réponse: {q['user_response'] + 1} (Correct)\033[0m")
+                        print(f"\033[92mVotre réponse: {q['user_response']} (Correct)\033[0m")
                     else:
-                        print(f"\033[91mVotre réponse: {q['user_response'] + 1} (Incorrect)\033[0m")
-                    print(f"\033[92mBonne réponse: {q['correct_response'] + 1}\033[0m")
+                        print(f"\033[91mVotre réponse: {q['user_response']} (Incorrect)\033[0m")
+                    print(f"\033[92mBonne réponse: {q['correct_response']}\033[0m")
                 print("-" * 40)
 
     except FileNotFoundError:

@@ -77,17 +77,17 @@ def ask_questions(questions, chosen_category, duree_max=10):
         while True:
             temps_ecoule = time.time() - temps_debut
             temps_restant = duree_max - temps_ecoule
+
+            if temps_restant <= 10:
+                sys.stdout.write(f"\rTemps restant: {int(temps_restant)} secondes! - votre reponse (1-5): ")# \r déplace le curseur au début de la ligne
+                sys.stdout.flush()# Rafraîchit la sortie standard
             
             if temps_restant <= 0:
-                display_message(f"\nTemps écoulé ! Vous aviez {duree_max} secondes pour répondre.", "warning")
+                display_message(f"Temps écoulé ! Vous aviez {duree_max} secondes pour répondre.", "warning")
                 user_answers.append(None)  # -1 pour timeout
                 break
-            
-            if temps_restant <= 10:
-                sys.stdout.write(f"\rTemps restant: {int(temps_restant)} secondes!   ")
-                sys.stdout.flush()
-            
-            if msvcrt.kbhit():
+
+            if msvcrt.kbhit():# Vérifie si une touche est enfoncée
                 key = msvcrt.getch().decode('utf-8')
                 if key in ['1', '2', '3', '4', '5']:
                     answer = int(key)
@@ -97,7 +97,7 @@ def ask_questions(questions, chosen_category, duree_max=10):
                         return user_answers
                     elif 1 <= answer <= 4:
                         user_answers.append(answer - 1)
-                        print(f"\nVous avez choisi: {answer}")
+                        display_message(f"Vous avez choisi: {answer}", "info")
                         break
             
             time.sleep(0.1)
@@ -184,7 +184,7 @@ def main():
                 view_user_responses(username)  # Nouvelle option
             elif choice == 4:
                 display_message(f"Votre score: {score}/{len(questions)}", "info")
-                display_message("Merci d'avoir utilisé l'application ! À bientôt.", "success")
+                typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
                 break
             else:
                 display_message("Choix invalide. Essayez encore.", "warning")

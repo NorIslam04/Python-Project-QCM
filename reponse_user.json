@@ -2,160 +2,198 @@
     {
         "username": "islam",
         "category": "basics",
-        "date": "2025-01-13 15:45:59",
+        "date": "2025-01-16 15:39:07",
+        "score": 1,
         "questions": [
             {
                 "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
-                "user_response": 0,
-                "correct_response": 1
+                "user_response": "int",
+                "correct_response": "str"
             },
             {
                 "question": "What keyword is used to define a variable in Python?",
-                "user_response": 0,
-                "correct_response": 3
+                "user_response": "var",
+                "correct_response": "No keyword needed"
             },
             {
                 "question": "What is the output of '3 + 2 * 2' in Python?",
-                "user_response": 0,
-                "correct_response": 1
+                "user_response": "10",
+                "correct_response": "7"
             },
             {
                 "question": "Which of these is a valid Python identifier?",
-                "user_response": 0,
-                "correct_response": 1
+                "user_response": "variable_1",
+                "correct_response": "variable_1"
             },
             {
                 "question": "How do you get the length of a string in Python?",
-                "user_response": 0,
-                "correct_response": 1
-            }
-        ]
-    },
-    {
-        "username": "islam",
-        "category": "basics",
-        "date": "2025-01-13 15:53:26",
-        "questions": [
-            {
-                "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
-                "user_response": -1,
-                "correct_response": 1
-            },
-            {
-                "question": "What keyword is used to define a variable in Python?",
-                "user_response": 1,
-                "correct_response": 3
-            },
-            {
-                "question": "What is the output of '3 + 2 * 2' in Python?",
-                "user_response": 1,
-                "correct_response": 1
-            },
-            {
-                "question": "Which of these is a valid Python identifier?",
-                "user_response": 1,
-                "correct_response": 1
-            },
-            {
-                "question": "How do you get the length of a string in Python?",
-                "user_response": 0,
-                "correct_response": 1
-            }
-        ]
-    },
-    {
-        "username": "ramy",
-        "category": "basics",
-        "date": "2025-01-13 15:56:05",
-        "questions": [
-            {
-                "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
-                "user_response": 1,
-                "correct_response": 1
-            },
-            {
-                "question": "What keyword is used to define a variable in Python?",
-                "user_response": 0,
-                "correct_response": 3
-            },
-            {
-                "question": "What is the output of '3 + 2 * 2' in Python?",
-                "user_response": 1,
-                "correct_response": 1
-            },
-            {
-                "question": "Which of these is a valid Python identifier?",
-                "user_response": 0,
-                "correct_response": 1
-            },
-            {
-                "question": "How do you get the length of a string in Python?",
-                "user_response": -1,
-                "correct_response": 1
+                "user_response": "length()",
+                "correct_response": "len()"
             }
         ]
     },
     {
         "username": "islam",
         "category": "data_structures",
-        "date": "2025-01-13 21:10:43",
+        "date": "2025-01-16 15:39:44",
+        "score": 3,
         "questions": [
             {
                 "question": "Quelle est la méthode correcte pour ajouter un élément à une liste en Python ?",
-                "user_response": 1,
-                "correct_response": 0
+                "user_response": "add()",
+                "correct_response": "append()"
             },
             {
                 "question": "Which data type is used to store a sequence of characters?",
-                "user_response": 2,
-                "correct_response": 1
+                "user_response": "tuple",
+                "correct_response": "string"
             },
             {
                 "question": "How do you create a list in Python?",
-                "user_response": 3,
-                "correct_response": 1
+                "user_response": "[]",
+                "correct_response": "[]"
             },
             {
                 "question": "What is the correct syntax for a dictionary in Python?",
-                "user_response": 0,
-                "correct_response": 0
+                "user_response": "{key: value}",
+                "correct_response": "{key: value}"
             },
             {
                 "question": "Which method is used to remove an item from a set?",
-                "user_response": 1,
-                "correct_response": 1
+                "user_response": "remove()",
+                "correct_response": "remove()"
             }
         ]
     },
     {
-        "username": "user",
+        "username": "islam",
         "category": "basics",
-        "date": "2025-01-13 21:11:27",
+        "date": "2025-01-16 15:47:02",
+        "score": 1,
         "questions": [
             {
                 "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
-                "user_response": 1,
-                "correct_response": 1
+                "user_response": "str",
+                "correct_response": "str"
             },
             {
                 "question": "What keyword is used to define a variable in Python?",
-                "user_response": 2,
-                "correct_response": 3
+                "user_response": "Pas de réponse",
+                "correct_response": "No keyword needed"
             },
             {
                 "question": "What is the output of '3 + 2 * 2' in Python?",
-                "user_response": 1,
-                "correct_response": 1
+                "user_response": "Pas de réponse",
+                "correct_response": "7"
             },
             {
                 "question": "Which of these is a valid Python identifier?",
-                "user_response": 2,
-                "correct_response": 1
+                "user_response": "Pas de réponse",
+                "correct_response": "variable_1"
             },
             {
                 "question": "How do you get the length of a string in Python?",
-                "user_response": 1,
-                "correct_response": 1
+                "user_response": "Pas de réponse",
+                "correct_response": "len()"
+            }
+        ]
+    },
+    {
+        "username": "islam",
+        "category": "basics",
+        "date": "2025-01-16 15:48:18",
+        "score": 3,
+        "questions": [
+            {
+                "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
+                "user_response": "str",
+                "correct_response": "str"
+            },
+            {
+                "question": "What keyword is used to define a variable in Python?",
+                "user_response": "Pas de réponse",
+                "correct_response": "No keyword needed"
+            },
+            {
+                "question": "What is the output of '3 + 2 * 2' in Python?",
+                "user_response": "7",
+                "correct_response": "7"
+            },
+            {
+                "question": "Which of these is a valid Python identifier?",
+                "user_response": "Pas de réponse",
+                "correct_response": "variable_1"
+            },
+            {
+                "question": "How do you get the length of a string in Python?",
+                "user_response": "len()",
+                "correct_response": "len()"
+            }
+        ]
+    },
+    {
+        "username": "lolo",
+        "category": "data_structures",
+        "date": "2025-01-16 15:49:58",
+        "score": 1,
+        "questions": [
+            {
+                "question": "Quelle est la méthode correcte pour ajouter un élément à une liste en Python ?",
+                "user_response": "add()",
+                "correct_response": "append()"
+            },
+            {
+                "question": "Which data type is used to store a sequence of characters?",
+                "user_response": "list",
+                "correct_response": "string"
+            },
+            {
+                "question": "How do you create a list in Python?",
+                "user_response": "[]",
+                "correct_response": "[]"
+            },
+            {
+                "question": "What is the correct syntax for a dictionary in Python?",
+                "user_response": "Pas de réponse",
+                "correct_response": "{key: value}"
+            },
+            {
+                "question": "Which method is used to remove an item from a set?",
+                "user_response": "Pas de réponse",
+                "correct_response": "remove()"
+            }
+        ]
+    },
+    {
+        "username": "test",
+        "category": "basics",
+        "date": "2025-01-16 15:55:36",
+        "score": 2,
+        "questions": [
+            {
+                "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
+                "user_response": "str",
+                "correct_response": "str"
+            },
+            {
+                "question": "What keyword is used to define a variable in Python?",
+                "user_response": "let",
+                "correct_response": "No keyword needed"
+            },
+            {
+                "question": "What is the output of '3 + 2 * 2' in Python?",
+                "user_response": "Pas de réponse",
+                "correct_response": "7"
+            },
+            {
+                "question": "Which of these is a valid Python identifier?",
+                "user_response": "Pas de réponse",
+                "correct_response": "variable_1"
+            },
+            {
+                "question": "How do you get the length of a string in Python?",
+                "user_response": "len()",
+                "correct_response": "len()"
             }
         ]
     }
