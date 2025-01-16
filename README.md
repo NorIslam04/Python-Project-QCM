@@ -19,6 +19,9 @@ Ce projet est une application de questionnaire à choix multiples (QCM) en Pytho
 1. Sélectionnez l'option "3. Voir mes réponses détaillées" dans le menu principal.
 2. Vos réponses détaillées pour chaque QCM seront affichées.
 
+### Minuteur
+- Un minuteur est intégré pour chaque question, vous indiquant le temps restant pour répondre.
+
 ## Fichiers Importants
 - `QCM.py`: Point d'entrée principal de l'application.
 - `display.py`: Contient les fonctions d'affichage pour le menu, les catégories et les messages.
