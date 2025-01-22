@@ -11,6 +11,25 @@ Ce projet est une application de questionnaire à choix multiples (QCM) en Pytho
 3. Choisissez une catégorie de questions (1-8).
 4. Répondez aux questions dans le temps imparti.
 
+### Administration
+- L'accès administrateur est disponible en se connectant avec le nom "admin" et le mot de passe "admin123"
+- L'administrateur a accès à des fonctionnalités supplémentaires :
+  1. Toutes les fonctionnalités utilisateur standard
+  2. Gestion des questions (ajouter/modifier/supprimer)
+  3. Un maximum de 3 tentatives est accordé pour la connexion admin
+
+### Gestion des Questions (Admin)
+Pour gérer les questions (menu option 4) :
+1. Ajouter une question
+   - Saisir la question
+   - Ajouter 4 réponses possibles 
+   - Indiquer le numéro de la bonne réponse
+2. Modifier une question existante
+   - Sélectionner la question à modifier
+   - Mettre à jour le texte, les réponses et la bonne réponse
+3. Supprimer une question
+   - Sélectionner et confirmer la suppression
+
 ### Voir l'historique des scores
 1. Sélectionnez l'option "2. Voir l'historique des scores" dans le menu principal.
 2. Votre historique de scores sera affiché.
@@ -24,6 +43,10 @@ Ce projet est une application de questionnaire à choix multiples (QCM) en Pytho
 
 ## Fichiers Importants
 - `QCM.py`: Point d'entrée principal de l'application.
+- `admin.py`: Gère les fonctionnalités d'administration :
+  - Vérification des identifiants admin
+  - Interface de gestion des questions
+  - Fonctions de manipulation des questions (CRUD)
 - `display.py`: Contient les fonctions d'affichage pour le menu, les catégories et les messages.
 - `hana.py`: Gère l'ajout de l'historique et l'affichage des réponses détaillées.
 - `ramy.py`: Gère l'affichage des scores et la sauvegarde des réponses des utilisateurs.
