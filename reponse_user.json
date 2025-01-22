@@ -300,5 +300,43 @@
                 "correct_response": "# Commentaire"
             }
         ]
+    },
+    {
+        "username": "admin",
+        "category": "basics",
+        "date": "2025-01-22 19:40:43",
+        "score": 6,
+        "questions": [
+            {
+                "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
+                "user_response": "str",
+                "correct_response": "str"
+            },
+            {
+                "question": "What keyword is used to define a variable in Python?",
+                "user_response": "No keyword needed",
+                "correct_response": "No keyword needed"
+            },
+            {
+                "question": "What is the output of '3 + 2 * 2' in Python?",
+                "user_response": "7",
+                "correct_response": "7"
+            },
+            {
+                "question": "Which of these is a valid Python identifier?",
+                "user_response": "variable_1",
+                "correct_response": "variable_1"
+            },
+            {
+                "question": "How do you get the length of a string in Python?",
+                "user_response": "len()",
+                "correct_response": "len()"
+            },
+            {
+                "question": "En Python, comment définit-on un commentaire dans le code ?",
+                "user_response": "# Commentaire",
+                "correct_response": "# Commentaire"
+            }
+        ]
     }
 ]

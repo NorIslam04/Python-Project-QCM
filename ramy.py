@@ -3,7 +3,13 @@ import json
 import csv
 from display import clear_console, display_header, display_message
 
-
+def get_question_count(category: str) -> int:
+    try:
+        with open(f"QST/{category}.json", "r", encoding="utf-8") as f:
+            questions = json.load(f)
+            return len(questions)
+    except:
+        return 5  # fallback to default
 
 def view_scores(username):
     
@@ -19,7 +25,8 @@ def view_scores(username):
                 if row["nom"] == username:
                     scores_found = True
                     j+=1
-                    print(f"{j}.categorie: {row['categorie']}- Score: ({row['score']}/5) - Date: {row['date']}")
+                    question_count = get_question_count(row['categorie'])
+                    print(f"{j}.categorie: {row['categorie']}- Score: ({row['score']}/{question_count}) - Date: {row['date']}")
 
         if not scores_found:
             display_message("Aucun historique trouvé.", "info")
