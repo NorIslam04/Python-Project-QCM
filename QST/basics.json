@@ -63,5 +63,15 @@
             "// Commentaire"
         ],
         "correctResponse": 2
+    },
+    {
+        "qst": "Quelle est la fonction utilisée pour afficher un message en Python ?",
+        "arrayResponse": [
+            "print()",
+            "input()",
+            "display()",
+            "write()"
+        ],
+        "correctResponse": 0
     }
 ]
