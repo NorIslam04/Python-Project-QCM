@@ -170,42 +170,57 @@ def main():
             display_message("Le nom doit contenir uniquement des lettres.", "error")
         else:
             break
-
-    if username.lower() == "admin":
-     if not verify_admin():
-        display_message("Mot de passe incorrect!", "error")
-        return
-     menu_function = admin_menu
-    else:
-     menu_function = display_menu
     
-    while True:
-        clear_console()
-        display_header(f"Bienvenue, {username}")
-        display_menu()
-        try:
-            choice = int(input("Votre choix: "))
-            if choice == 1:
-                take_quiz(username)
-            elif choice == 2:
-                view_scores(username)
-            elif choice == 3:
-                view_user_responses(username)
-            elif choice == 4 and username.lower() == "admin":
-                manage_questions()
-            elif choice == 4:
-                display_message(f"Votre score: {score}/{len(questions)}", "info")
-                typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
-                break
-            elif choice == 5 and username.lower() == "admin":
-                display_message(f"Votre score: {score}/{len(questions)}", "info")
-                typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
-                break
-            else:
-                display_message("Choix invalide. Essayez encore.", "warning")
-        except ValueError:
-            display_message("Entrée invalide. Veuillez entrer un nombre.", "error")
-        input("\nAppuyez sur Entrée pour continuer...")
+    if username.lower() == "admin":
+        if not verify_admin():
+            display_message("Mot de passe incorrect!", "error")
+            return
+        
+        while True:
+            clear_console()
+            display_header(f"Bienvenue, {username}")
+            admin_menu()
+            try:
+                choice = int(input("Votre choix: "))
+                if choice == 1:
+                    take_quiz(username)
+                elif choice == 2:
+                    view_scores(username)
+                elif choice == 3:
+                    view_user_responses(username)
+                elif choice == 4:
+                    manage_questions()
+                elif choice == 5:
+                    display_message(f"Votre score: {score}/{len(questions)}", "info")
+                    typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
+                    break
+                else:
+                    display_message("Choix invalide. Essayez encore.", "warning")
+            except ValueError:
+                display_message("Entrée invalide. Veuillez entrer un nombre.", "error")
+            input("\nAppuyez sur Entrée pour continuer...")
+    else:
+        while True:
+            clear_console()
+            display_header(f"Bienvenue, {username}")
+            display_menu()
+            try:
+                choice = int(input("Votre choix: "))
+                if choice == 1:
+                    take_quiz(username)
+                elif choice == 2:
+                    view_scores(username)
+                elif choice == 3:
+                    view_user_responses(username)
+                elif choice == 4:
+                    display_message(f"Votre score: {score}/{len(questions)}", "info")
+                    typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
+                    break
+                else:
+                    display_message("Choix invalide. Essayez encore.", "warning")
+            except ValueError:
+                display_message("Entrée invalide. Veuillez entrer un nombre.", "error")
+            input("\nAppuyez sur Entrée pour continuer...")
 
 
 

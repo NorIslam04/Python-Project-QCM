@@ -53,5 +53,15 @@
         ],
         "correctResponse": 1,
         "categorie": "basics"
+    },
+    {
+        "qst": "En Python, comment définit-on un commentaire dans le code ?",
+        "arrayResponse": [
+            "/* Commentaire */",
+            "<!-- Commentaire -->",
+            "# Commentaire",
+            "// Commentaire"
+        ],
+        "correctResponse": 2
     }
 ]

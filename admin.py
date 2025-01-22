@@ -134,7 +134,7 @@ def manage_questions():
         try:
             choice = int(input("Votre choix: "))
             if choice == 4:
-                break
+                return  # Simply return to main admin menu
             if 1 <= choice <= 3:
                 category = get_category_choice()
                 if choice == 1:
