@@ -51,11 +51,27 @@ def save_questions(category, questions):
         json.dump(questions, f, indent=4, ensure_ascii=False)
 
 def add_question(category):
+    # S'assurer que la question n'est pas vide
+    while True:
+        question_text = input("Question: ").strip()
+        if question_text:
+            break
+        else:
+            display_message("La question ne peut pas être vide.", "error")
+    
+    arrayResponse = []
+    for i in range(4):
+        while True:
+            response = input(f"Réponse {i + 1}: ").strip()
+            if response:
+                arrayResponse.append(response)
+                break
+            else:
+                display_message("La réponse ne peut pas être vide.", "error")
+    
     question = {
-        "qst": input("Question: "),
-        "arrayResponse": [
-            input(f"Réponse {i+1}: ") for i in range(4)
-        ],
+        "qst": question_text,
+        "arrayResponse": arrayResponse,
         "correctResponse": None
     }
     
@@ -74,6 +90,7 @@ def add_question(category):
     save_questions(category, questions)
     display_message("Question ajoutée avec succès!", "success")
 
+
 def update_question(category):
     questions = load_questions(category)
     if not questions:
@@ -87,9 +104,25 @@ def update_question(category):
     try:
         idx = int(input("\nChoisir le numéro de la question à modifier: ")) - 1
         if 0 <= idx < len(questions):
-            questions[idx]["qst"] = input("Nouvelle question: ")
+            # Vérifier que la nouvelle question n'est pas vide
+            while True:
+                new_question = input("Nouvelle question: ").strip()
+                if new_question:
+                    questions[idx]["qst"] = new_question
+                    break
+                else:
+                    display_message("La question ne peut pas être vide.", "error")
+            
+            # Vérifier que chaque nouvelle réponse n'est pas vide
             for i in range(4):
-                questions[idx]["arrayResponse"][i] = input(f"Nouvelle réponse {i+1}: ")
+                while True:
+                    new_response = input(f"Nouvelle réponse {i + 1}: ").strip()
+                    if new_response:
+                        questions[idx]["arrayResponse"][i] = new_response
+                        break
+                    else:
+                        display_message("La réponse ne peut pas être vide.", "error")
+            
             while True:
                 try:
                     correct = int(input("Numéro de la bonne réponse (1-4): ")) - 1
@@ -98,12 +131,14 @@ def update_question(category):
                         break
                 except ValueError:
                     display_message("Entrée invalide.", "error")
+            
             save_questions(category, questions)
             display_message("Question modifiée avec succès!", "success")
         else:
             display_message("Numéro de question invalide.", "error")
     except ValueError:
         display_message("Entrée invalide.", "error")
+
 
 def delete_question(category):
     questions = load_questions(category)

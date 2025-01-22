@@ -172,9 +172,19 @@ def main():
             break
     
     if username.lower() == "admin":
-        if not verify_admin():
-            display_message("Mot de passe incorrect!", "error")
-            return
+        max_attempts = 3
+        attempts = 0
+        
+        while attempts < max_attempts:
+            if verify_admin():
+                break 
+            else:
+                attempts += 1
+                display_message(f"Mot de passe incorrect! Tentative {attempts}/{max_attempts}.", "error")
+        
+        if attempts == max_attempts:
+            display_message("Trop de tentatives échouées", "error")
+            return 
         
         while True:
             clear_console()
@@ -190,6 +200,7 @@ def main():
                     view_user_responses(username)
                 elif choice == 4:
                     manage_questions()
+                    continue  # Retourne au menu admin sans afficher "Appuyez sur Entrée"
                 elif choice == 5:
                     display_message(f"Votre score: {score}/{len(questions)}", "info")
                     typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
