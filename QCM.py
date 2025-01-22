@@ -7,6 +7,7 @@ from datetime import datetime
 from ramy import view_scores, save_user_responses
 from hana import ajouter_historique, view_user_responses
 from display import clear_console, display_header, display_message, typewriter_effect, display_menu, display_categories
+from admin import verify_admin, admin_menu, manage_questions
 
 
 questions = []
@@ -169,6 +170,14 @@ def main():
             display_message("Le nom doit contenir uniquement des lettres.", "error")
         else:
             break
+
+    if username.lower() == "admin":
+     if not verify_admin():
+        display_message("Mot de passe incorrect!", "error")
+        return
+     menu_function = admin_menu
+    else:
+     menu_function = display_menu
     
     while True:
         clear_console()
@@ -181,8 +190,14 @@ def main():
             elif choice == 2:
                 view_scores(username)
             elif choice == 3:
-                view_user_responses(username)  # Nouvelle option
+                view_user_responses(username)
+            elif choice == 4 and username.lower() == "admin":
+                manage_questions()
             elif choice == 4:
+                display_message(f"Votre score: {score}/{len(questions)}", "info")
+                typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
+                break
+            elif choice == 5 and username.lower() == "admin":
                 display_message(f"Votre score: {score}/{len(questions)}", "info")
                 typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
                 break

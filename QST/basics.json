@@ -12,25 +12,45 @@
     },
     {
         "qst": "What keyword is used to define a variable in Python?",
-        "arrayResponse": ["let", "var", "define", "No keyword needed"],
+        "arrayResponse": [
+            "let",
+            "var",
+            "define",
+            "No keyword needed"
+        ],
         "correctResponse": 3,
         "categorie": "basics"
     },
     {
         "qst": "What is the output of '3 + 2 * 2' in Python?",
-        "arrayResponse": ["10", "7", "8", "9"],
+        "arrayResponse": [
+            "10",
+            "7",
+            "8",
+            "9"
+        ],
         "correctResponse": 1,
         "categorie": "basics"
     },
     {
         "qst": "Which of these is a valid Python identifier?",
-        "arrayResponse": ["1variable", "variable_1", "variable-1", "variable 1"],
+        "arrayResponse": [
+            "1variable",
+            "variable_1",
+            "variable-1",
+            "variable 1"
+        ],
         "correctResponse": 1,
         "categorie": "basics"
     },
     {
         "qst": "How do you get the length of a string in Python?",
-        "arrayResponse": ["length()", "len()", "size()", "getLength()"],
+        "arrayResponse": [
+            "length()",
+            "len()",
+            "size()",
+            "getLength()"
+        ],
         "correctResponse": 1,
         "categorie": "basics"
     }
