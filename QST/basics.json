@@ -73,15 +73,5 @@
             "write()"
         ],
         "correctResponse": 0
-    },
-    {
-        "qst": "1",
-        "arrayResponse": [
-            "1",
-            "1",
-            "1",
-            "1"
-        ],
-        "correctResponse": 1
     }
 ]
