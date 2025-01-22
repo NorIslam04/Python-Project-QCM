@@ -12,7 +12,6 @@ def get_question_count(category: str) -> int:
         return 5  # fallback to default
 
 def view_scores(username):
-    
     clear_console()
     display_header("Historique des Scores")
 
@@ -26,7 +25,9 @@ def view_scores(username):
                     scores_found = True
                     j+=1
                     question_count = get_question_count(row['categorie'])
-                    print(f"{j}.categorie: {row['categorie']}- Score: ({row['score']}/{question_count}) - Date: {row['date']}")
+                    print(f"\033[92m{j}.\033[0m categorie: \033[92m{row['categorie']}\033[0m"
+                          f" - Score: \033[92m({row['score']}/{question_count})\033[0m"
+                          f" - Date: \033[92m{row['date']}\033[0m")
 
         if not scores_found:
             display_message("Aucun historique trouvé.", "info")
