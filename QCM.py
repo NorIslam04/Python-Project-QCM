@@ -202,9 +202,11 @@ def main():
                     manage_questions()
                     continue  # Retourne au menu admin sans afficher "Appuyez sur Entrée"
                 elif choice == 5:
+                    main()
+                elif choice == 6:
                     display_message(f"Votre score: {score}/{len(questions)}", "info")
                     typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
-                    break
+                    exit()
                 else:
                     display_message("Choix invalide. Essayez encore.", "warning")
             except ValueError:
@@ -224,9 +226,11 @@ def main():
                 elif choice == 3:
                     view_user_responses(username)
                 elif choice == 4:
+                    main()
+                elif choice == 5:
                     display_message(f"Votre score: {score}/{len(questions)}", "info")
                     typewriter_effect("\nMerci d'avoir utilisé l'application ! À bientôt.", 0.05)
-                    break
+                    exit()
                 else:
                     display_message("Choix invalide. Essayez encore.", "warning")
             except ValueError:

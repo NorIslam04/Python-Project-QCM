@@ -338,5 +338,83 @@
                 "correct_response": "# Commentaire"
             }
         ]
+    },
+    {
+        "username": "admin",
+        "category": "data_structures",
+        "date": "2025-01-22 20:28:15",
+        "score": 0,
+        "questions": []
+    },
+    {
+        "username": "islam",
+        "category": "basics",
+        "date": "2025-01-22 20:33:18",
+        "score": 0,
+        "questions": []
+    },
+    {
+        "username": "islam",
+        "category": "basics",
+        "date": "2025-01-22 20:33:37",
+        "score": 0,
+        "questions": [
+            {
+                "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
+                "user_response": "int",
+                "correct_response": "str"
+            },
+            {
+                "question": "What keyword is used to define a variable in Python?",
+                "user_response": "var",
+                "correct_response": "No keyword needed"
+            }
+        ]
+    },
+    {
+        "username": "admin",
+        "category": "basics",
+        "date": "2025-01-22 20:43:38",
+        "score": 1,
+        "questions": [
+            {
+                "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
+                "user_response": "str",
+                "correct_response": "str"
+            },
+            {
+                "question": "What keyword is used to define a variable in Python?",
+                "user_response": "let",
+                "correct_response": "No keyword needed"
+            }
+        ]
+    },
+    {
+        "username": "islam",
+        "category": "basics",
+        "date": "2025-01-22 20:45:04",
+        "score": 1,
+        "questions": [
+            {
+                "question": "Quel type de données est utilisé pour représenter du texte en Python ?",
+                "user_response": "int",
+                "correct_response": "str"
+            },
+            {
+                "question": "What keyword is used to define a variable in Python?",
+                "user_response": "var",
+                "correct_response": "No keyword needed"
+            },
+            {
+                "question": "What is the output of '3 + 2 * 2' in Python?",
+                "user_response": "10",
+                "correct_response": "7"
+            },
+            {
+                "question": "Which of these is a valid Python identifier?",
+                "user_response": "variable_1",
+                "correct_response": "variable_1"
+            }
+        ]
     }
 ]

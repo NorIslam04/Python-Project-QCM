@@ -8,7 +8,8 @@ def display_menu():
     print("1. Répondre à un QCM")
     print("2. Voir l'historique des scores")
     print("3. Voir mes réponses détaillées")  # Nouvelle option
-    print("4. Quitter")
+    print("4. changer de compte")
+    print("5. Quitter")
     print("-" * 20)
 
 # Function to display categories

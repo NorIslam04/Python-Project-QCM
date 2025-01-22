@@ -35,9 +35,6 @@ def view_user_responses(username: str) -> None:
 
         user_entries = [entry for entry in responses if entry["username"] == username]
 
-        if not user_entries:
-            display_message("Aucune réponse trouvée pour cet utilisateur.", "info")
-            return
 
         for entry in user_entries:
             print(f"\n{'='*50}")
@@ -45,6 +42,15 @@ def view_user_responses(username: str) -> None:
             print(f"Date: {entry['date']}")
             print(f"Score: {entry['score']}/5")
             print(f"{'='*50}")
+
+            if not entry.get("questions"):
+                display_message("Aucune question trouvée pour cette session.", "info")
+                continue
+                
+
+            if not user_entries:
+                display_message("Aucune réponse trouvée pour cet utilisateur.", "info")
+                return
 
             for i, q in enumerate(entry["questions"], 1):
                 print(f"\nQuestion {i}: {q['question']}")

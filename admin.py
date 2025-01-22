@@ -9,7 +9,8 @@ def admin_menu():
     print("2. Voir l'historique des scores")
     print("3. Voir mes réponses détaillées")
     print("4. Gérer les questions")
-    print("5. Quitter")
+    print("5. Changer de compte")
+    print("6. Quitter")
     print("-" * 20)
 
 def question_management_menu():
